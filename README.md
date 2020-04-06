@@ -1,10 +1,15 @@
 UWP Systray
+
 Purpose: This repo is a sample to reproduce an issue with .NET standard library throwing an exception when being added as a dependency to a full trust win forms app which is part of a UWP application.
 
 Prerequisites
+
 SDK 17763
+
 Desktop extensions sdk 17763
+
 .NET Standard 2.0
+
 .NET Framework 4.7.2
 
 
