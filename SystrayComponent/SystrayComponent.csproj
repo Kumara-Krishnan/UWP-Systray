@@ -10,6 +10,7 @@
     <AssemblyName>SystrayComponent</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -96,6 +97,10 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy /y "$(TargetPath)" "$(SolutionDir)SystrayExtension\Win32\"</PostBuildEvent>
+    <PostBuildEvent>copy /y "$(TargetPath)" "$(SolutionDir)SystrayExtension\Win32\"
+copy /y "$(TargetDir)DomainLogic.dll" "$(SolutionDir)SystrayExtension\Win32\"
+copy /y "$(TargetDir)Microsoft.Bcl.AsyncInterfaces.dll" "$(SolutionDir)SystrayExtension\Win32\"
+copy /y "$(TargetDir)Microsoft.Extensions.DependencyInjection.Abstractions.dll" "$(SolutionDir)SystrayExtension\Win32\"
+copy /y "$(TargetDir)Microsoft.Extensions.DependencyInjection.dll" "$(SolutionDir)SystrayExtension\Win32\"</PostBuildEvent>
   </PropertyGroup>
 </Project>

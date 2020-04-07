@@ -18,6 +18,8 @@ using Windows.ApplicationModel.Core;
 using Windows.ApplicationModel.AppService;
 using Windows.Foundation.Collections;
 using DomainLogic;
+using System.IO;
+using System.Text;
 
 namespace SystrayComponent
 {
@@ -38,7 +40,7 @@ namespace SystrayComponent
 
             notifyIcon = new NotifyIcon();
             notifyIcon.DoubleClick += new EventHandler(OpenApp);
-            notifyIcon.Icon = SystrayComponent.Properties.Resources.Icon1;
+            notifyIcon.Icon = Properties.Resources.Icon1;
             notifyIcon.ContextMenu = new ContextMenu(new MenuItem[] { executeDomainLogic, openMenuItem, sendMenuItem, legacyMenuItem, exitMenuItem });
             notifyIcon.Visible = true;
         }
@@ -47,12 +49,24 @@ namespace SystrayComponent
         {
             try
             {
-                var domainLogic = new Class1();
+                var domainLogic = DIServiceProvider.Instance.GetService<Class1>();
                 domainLogic.Test();
             }
             catch (Exception ex)
             {
+                LogToFile(ex.ToString());
                 System.Diagnostics.Debug.WriteLine(ex.ToString());
+            }
+        }
+
+        private void LogToFile(string message)
+        {
+            var data = Encoding.UTF8.GetBytes(message);
+            var fileStream = File.OpenWrite(Windows.Storage.ApplicationData.Current.LocalFolder.Path + "\\Log.txt");
+            using (fileStream)
+            {
+                fileStream.Write(data, 0, data.Length);
+                fileStream.Flush();
             }
         }
 

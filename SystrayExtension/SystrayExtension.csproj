@@ -136,6 +136,10 @@
     <Content Include="Assets\StoreLogo.scale-200.png" />
     <Content Include="Assets\Wide310x150Logo.scale-100.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+    <Content Include="Win32\DomainLogic.dll" />
+    <Content Include="Win32\Microsoft.Bcl.AsyncInterfaces.dll" />
+    <Content Include="Win32\Microsoft.Extensions.DependencyInjection.Abstractions.dll" />
+    <Content Include="Win32\Microsoft.Extensions.DependencyInjection.dll" />
     <Content Include="Win32\SystrayComponent.exe" />
     <None Include="Package.StoreAssociation.xml" />
     <Content Include="Properties\Default.rd.xml" />

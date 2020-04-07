@@ -29,7 +29,7 @@ namespace SystrayExtension
         {
             base.OnNavigatedTo(e);
             octopusMove.Begin();
-            var domainLogic = new Class1();
+            var domainLogic = DIServiceProvider.Instance.GetService<Class1>();
             domainLogic.Test();
             if (ApiInformation.IsApiContractPresent(
                               "Windows.ApplicationModel.FullTrustAppContract", 1, 0))
